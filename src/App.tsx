@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { AppState } from "./redux/store";
 import { add, subtract, deliverInput } from "./redux/actions";
-import "./App.css";
+import "./css/App.css";
 
 function App() {
   const count = useSelector((state: AppState) => state.first.count);
