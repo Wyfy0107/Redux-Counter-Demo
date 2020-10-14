@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppState } from "./redux/store";
-import { add, subtract, deliverInput } from "./redux/actions";
+import { add, subtract, deliverInput, fetchMovies } from "./redux/actions";
 import "./css/App.css";
 
 function App() {
   const count = useSelector((state: AppState) => state.first.count);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMovies());
+  }, [dispatch]);
 
   const addHandler = () => {
     dispatch(add());

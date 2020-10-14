@@ -12,6 +12,15 @@ type InputAction = {
   payload: number;
 };
 
+type FetchMoviesAction = {
+  type: string;
+};
+
+type FetchMoviesSuccessAction = {
+  type: string;
+  payload: any[];
+};
+
 export const add = (): AddAction => {
   return {
     type: "ADD",
@@ -32,4 +41,22 @@ export const deliverInput = (amount: number) => {
   };
 };
 
-export type ActionTypes = AddAction | SubTractAction | InputAction;
+export const fetchMovies = (): FetchMoviesAction => {
+  return {
+    type: "FETCH_MOVIES",
+  };
+};
+
+export const fetchMoviesSuccess = (movies: any): FetchMoviesSuccessAction => {
+  return {
+    type: "FETCH_SUCCESS",
+    payload: movies,
+  };
+};
+
+export type ActionTypes =
+  | AddAction
+  | SubTractAction
+  | InputAction
+  | FetchMoviesAction
+  | FetchMoviesSuccessAction;

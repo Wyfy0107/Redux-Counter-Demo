@@ -1,8 +1,20 @@
 import { ActionTypes } from "../actions";
 
-const initialState = {
+type InitialState = {
+  count: number;
+  input: number;
+  moviesList: any[];
+};
+
+const initialState: InitialState = {
   count: 0,
   input: 0,
+  moviesList: [],
+};
+
+type Action = {
+  type: string;
+  payload: number | any[];
 };
 
 const reducer = (state = initialState, action: ActionTypes) => {
@@ -17,7 +29,7 @@ const reducer = (state = initialState, action: ActionTypes) => {
       if ("payload" in action) {
         return {
           ...state,
-          count: state.count - action.payload,
+          count: state.count - (action.payload as number),
         };
       }
       break;
@@ -30,6 +42,19 @@ const reducer = (state = initialState, action: ActionTypes) => {
           input: action.payload,
         };
       }
+      break;
+
+    case "FETCH_MOVIES":
+      console.log("fired");
+      return { ...state };
+
+    case "FETCH_SUCCESS":
+      console.log(action);
+      if ("payload" in action)
+        return {
+          ...state,
+          moviesList: action.payload,
+        };
       break;
 
     default:

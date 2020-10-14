@@ -2,11 +2,13 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import createRootReducer from "./reducers";
+import rootSaga from "./redux-saga";
 
 export type AppState = {
   first: {
     count: number;
     input: number;
+    moviesList: any[];
   };
   second: {
     name: string;
@@ -17,6 +19,7 @@ const appState: AppState = {
   first: {
     count: 0,
     input: 0,
+    moviesList: [],
   },
   second: {
     name: "",
@@ -36,11 +39,12 @@ export default function makeStore(initialState = appState) {
 
   const store = createStore(
     createRootReducer(),
+    //@ts-ignore
     initialState,
     composeEnhancers(applyMiddleware(...middlewares))
   );
 
-  // sagaMiddleware.run(rootSaga);
+  sagaMiddleware.run(rootSaga);
 
   if ((module as any).hot) {
     (module as any).hot.accept("./reducers", () => {
