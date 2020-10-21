@@ -8,11 +8,24 @@ export type AppState = {
   first: {
     count: number;
     input: number;
-    moviesList: any[];
+    moviesList: Movie[];
   };
   second: {
     name: string;
+    movies: string[];
+    input: string;
+    dog: {
+      message: string;
+      status: string;
+    };
   };
+};
+
+type Movie = {
+  _id: string;
+  name: string;
+  description: string;
+  rating: number;
 };
 
 const appState: AppState = {
@@ -23,6 +36,12 @@ const appState: AppState = {
   },
   second: {
     name: "",
+    movies: [""],
+    input: "",
+    dog: {
+      message: "",
+      status: "",
+    },
   },
 };
 

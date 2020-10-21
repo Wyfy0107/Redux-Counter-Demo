@@ -54,6 +54,39 @@ export const fetchMoviesSuccess = (movies: any): FetchMoviesSuccessAction => {
   };
 };
 
+export const fetchData = () => {
+  return {
+    type: "FETCH_FETCH_FETCH",
+  };
+};
+
+export const deliverDataToReducer = (data: any) => {
+  return {
+    type: "DATA_RECEIVED",
+    payload: data,
+  };
+};
+
+//Trigger saga, deliver input to reducer
+export const deliverUserInputToReducer = (input: string) => {
+  return {
+    type: "DELIVER_INPUT",
+    payload: input,
+  };
+};
+
+export type Response = {
+  message: string;
+  status: string;
+};
+//Deliver the request response to reducer
+export const postInputSuccess = (response: Response) => {
+  return {
+    type: "POST_SUCCESS",
+    payload: response,
+  };
+};
+
 export type ActionTypes =
   | AddAction
   | SubTractAction
