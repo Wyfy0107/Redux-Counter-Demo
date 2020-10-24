@@ -2,48 +2,9 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import createRootReducer from "./reducers";
-import rootSaga from "./redux-saga";
 
-export type AppState = {
-  first: {
-    count: number;
-    input: number;
-    moviesList: Movie[];
-  };
-  second: {
-    name: string;
-    movies: string[];
-    input: string;
-    dog: {
-      message: string;
-      status: string;
-    };
-  };
-};
-
-type Movie = {
-  _id: string;
-  name: string;
-  description: string;
-  rating: number;
-};
-
-const appState: AppState = {
-  first: {
-    count: 0,
-    input: 0,
-    moviesList: [],
-  },
-  second: {
-    name: "",
-    movies: [""],
-    input: "",
-    dog: {
-      message: "",
-      status: "",
-    },
-  },
-};
+//app state in here. Type of appState will be in types.ts file
+const appState = {};
 
 export default function makeStore(initialState = appState) {
   const sagaMiddleware = createSagaMiddleware();
@@ -58,12 +19,11 @@ export default function makeStore(initialState = appState) {
 
   const store = createStore(
     createRootReducer(),
-    //@ts-ignore
     initialState,
     composeEnhancers(applyMiddleware(...middlewares))
   );
 
-  sagaMiddleware.run(rootSaga);
+  // sagaMiddleware.run(rootSaga);
 
   if ((module as any).hot) {
     (module as any).hot.accept("./reducers", () => {
