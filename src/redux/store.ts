@@ -2,9 +2,14 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import createRootReducer from "./reducers";
+import { AppState } from "./types";
 
 //app state in here. Type of appState will be in types.ts file
-const appState = {};
+const appState:AppState = {
+  counterReducer:{
+    counter:0
+  }
+};
 
 export default function makeStore(initialState = appState) {
   const sagaMiddleware = createSagaMiddleware();
