@@ -14,3 +14,19 @@ export const counterDecreamentAction = ():ActionsTypes => {
         type:"DECREAMENT_COUNT"
     }
 }
+export const inputReceivedAction = (input:number):any => {
+        return{
+            type:"GET_INPUT",
+            payload:input
+        } 
+}
+export const decreamentReceivedInput = ():ActionsTypes => {
+    return{
+        type:"DECREAMENT_INPUT"
+    }
+}
+export const increamentReceivedInput = ():ActionsTypes => {
+    return{
+        type:"INCREAMENT_INPUT"
+    }
+}
