@@ -12,8 +12,7 @@ import { AppState } from './redux/types';
 
 function App() {
 	const { count, input } = useSelector((state: AppState) => state.counter);
-	console.log('count :', count);
-	console.log('input', input);
+
 	const dispatch = useDispatch();
 
 	const handleAdd = () => dispatch(addAction());
@@ -33,7 +32,9 @@ function App() {
 				<input
 					type='number'
 					placeholder='Multiply result with . . .'
-					onChange={(e: any) => dispatch(handleInputChange(e.target.value))} // TODO: why ((event: React.ChangeEvent<HTMLInputElement>) => was not helpful here???
+					onChange={(e) =>
+						dispatch(handleInputChange(parseInt(e.target.value, 10)))
+					}
 				/>
 				<button onClick={handleMultiply}>MULTIPLY</button>
 			</section>
