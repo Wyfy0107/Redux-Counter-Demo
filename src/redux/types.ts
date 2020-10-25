@@ -9,4 +9,7 @@ type addActionTypes = {
   type: string
 }
 
-export type ActionTypes = addActionTypes
+type minusActionTypes = {
+  type: string
+}
+export type ActionTypes = addActionTypes | minusActionTypes

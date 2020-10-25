@@ -1,4 +1,4 @@
-import { ADD } from "../constants";
+import { ADD, MINUS } from "../constants";
 import { ActionTypes, CounterState } from "../types";
 
 const initialState: CounterState = {
@@ -12,6 +12,13 @@ const counter = (state = initialState, action: ActionTypes) => {
       return { 
         ...state,
         count: state.count + 1
+      }
+    
+    
+    case MINUS:
+      return {
+        ...state,
+        count: state.count - 1
       }
     
     default: 
