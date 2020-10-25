@@ -1,8 +1,9 @@
-import { ADD, MINUS } from "../constants";
+import { ADD, HANDLE_INPUT, MINUS } from "../constants";
 import { ActionTypes, CounterState } from "../types";
 
 const initialState: CounterState = {
-  count: 0
+  count: 0,
+  input:0
 }
 
 const counter = (state = initialState, action: ActionTypes) => {
@@ -21,6 +22,12 @@ const counter = (state = initialState, action: ActionTypes) => {
         count: state.count - 1
       }
     
+    case HANDLE_INPUT:
+      if('payload' in action)
+      return {
+        ...state,
+        input: action.payload
+      }
     default: 
       return state
   }

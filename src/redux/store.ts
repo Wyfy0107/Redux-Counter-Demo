@@ -7,7 +7,8 @@ import { AppState } from "./types";
 //app state in here. Type of appState will be in types.ts file
 const appState: AppState = {
   counter: {
-    count: 0
+    count: 0,
+    input: 0
   }
 };
 
