@@ -1,4 +1,4 @@
-import { ADD, HANDLE_INPUT, MINUS } from "../constants";
+import { ADD, HANDLE_INPUT, MINUS, MULTIPLY } from "../constants";
 import { ActionTypes, CounterState } from "../types";
 
 const initialState: CounterState = {
@@ -15,7 +15,6 @@ const counter = (state = initialState, action: ActionTypes) => {
         count: state.count + 1
       }
     
-    
     case MINUS:
       return {
         ...state,
@@ -28,9 +27,18 @@ const counter = (state = initialState, action: ActionTypes) => {
         ...state,
         input: action.payload
       }
-    default: 
-      return state
-  }
+      
+      break // not sure about this 'break', but it scaled through :)
+    
+      case MULTIPLY: 
+      return {
+        ...state,
+        count: state.count * state.input
+      }
+    
+      default: 
+        return state
+    }
 }
 
 export default counter

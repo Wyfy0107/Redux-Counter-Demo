@@ -9,18 +9,23 @@ export type CounterState = {
 
 
 // Declare each action types
-type addActionTypes = {
+type addActionType = {
   type: string
 }
 
-type minusActionTypes = {
+type minusActionType = {
   type: string
 }
 
-type inputChangeAction = {
+type inputChangeActionType = {
+  type: string
+  payload: number
+}
+
+type multiplyActionType = {
   type: string
   payload: number
 }
 
 // export all action types as ActionTypes
-export type ActionTypes = addActionTypes | minusActionTypes | inputChangeAction
+export type ActionTypes = addActionType | minusActionType | inputChangeActionType | multiplyActionType
