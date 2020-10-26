@@ -5,6 +5,8 @@ export type AppState = {
 export type CounterState = {
   count: number
   input: number
+  increaseBy: number
+  decreaseBy: number
 }
 
 
@@ -27,5 +29,10 @@ type multiplyActionType = {
   payload: number
 }
 
+type selectedNumberType = {
+  type: string,
+  payload: number
+}
+
 // export all action types as ActionTypes
-export type ActionTypes = addActionType | minusActionType | inputChangeActionType | multiplyActionType
+export type ActionTypes = addActionType | minusActionType | inputChangeActionType | multiplyActionType | selectedNumberType

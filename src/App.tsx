@@ -7,11 +7,15 @@ import {
 	minusAction,
 	handleInputChange,
 	multiplyAction,
+	handleIncreaseBy,
+	handleDecreaseBy,
 } from './redux/actions';
 import { AppState } from './redux/types';
 
 function App() {
-	const { count, input } = useSelector((state: AppState) => state.counter);
+	const { count, input, increaseBy, decreaseBy } = useSelector(
+		(state: AppState) => state.counter,
+	);
 
 	const dispatch = useDispatch();
 
@@ -21,23 +25,30 @@ function App() {
 
 	return (
 		<>
-			<section>
-				<p>Result: {count}</p>
-			</section>
-			<section>
-				<button onClick={handleAdd}>ADD 1</button>
-				<button onClick={handleMinus}>MINUS 1</button>
-			</section>
-			<section>
-				<input
-					type='number'
-					placeholder='Multiply result with . . .'
-					onChange={(e) =>
-						dispatch(handleInputChange(parseInt(e.target.value, 10)))
-					}
-				/>
-				<button onClick={handleMultiply}>MULTIPLY</button>
-			</section>
+			<p>Result: {count}</p>
+			<br />
+			<button onClick={handleAdd}>Increase by:</button>
+			<input
+				type='number'
+				value={increaseBy}
+				onChange={(e) => dispatch(handleIncreaseBy(+e.target.value))}
+			/>
+			<br />
+			<button onClick={handleMinus}>Decrease by:</button>
+			<input
+				type='number'
+				value={decreaseBy}
+				onChange={(e) => dispatch(handleDecreaseBy(+e.target.value))}
+			/>
+			<br />
+			<button onClick={handleMultiply}>Multiply by:</button>
+			<input
+				type='number'
+				placeholder='Multiply result with . . .'
+				onChange={(e) =>
+					dispatch(handleInputChange(parseInt(e.target.value, 10)))
+				}
+			/>
 		</>
 	);
 }

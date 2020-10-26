@@ -8,7 +8,10 @@ import { AppState } from "./types";
 const appState: AppState = {
   counter: {
     count: 0,
-    input: 0
+    input: 0,
+    increaseBy: 1,
+    decreaseBy: 1,
+
   }
 };
 

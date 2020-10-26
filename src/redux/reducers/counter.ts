@@ -1,9 +1,12 @@
-import { ADD, HANDLE_INPUT, MINUS, MULTIPLY } from "../constants";
+import { ADD, HANDLE_INPUT, MINUS, MULTIPLY , INCREASE_BY, DECREASE_BY} from "../constants";
 import { ActionTypes, CounterState } from "../types";
 
 const initialState: CounterState = {
   count: 0,
-  input:0
+  input: 0,
+  increaseBy: 1,
+  decreaseBy: 1,
+  
 }
 
 const counter = (state = initialState, action: ActionTypes) => {
@@ -12,13 +15,13 @@ const counter = (state = initialState, action: ActionTypes) => {
     case ADD: 
       return { 
         ...state,
-        count: state.count + 1
+        count: state.count + state.increaseBy
       }
     
     case MINUS:
       return {
         ...state,
-        count: state.count - 1
+        count: state.count - state.decreaseBy
       }
     
     case HANDLE_INPUT:
@@ -36,6 +39,22 @@ const counter = (state = initialState, action: ActionTypes) => {
         count: state.count * state.input
       }
     
+    case INCREASE_BY: 
+    if('payload' in action)
+      return {
+        ...state,
+        increaseBy: action.payload,
+      }
+
+      break
+      case DECREASE_BY: 
+      if('payload' in action)
+        return {
+          ...state,
+          decreaseBy: action.payload,
+        }
+    
+      break
       default: 
         return state
     }
